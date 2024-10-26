@@ -3,8 +3,8 @@ import connectDB from './config/database';
 
 connectDB()
   .then(() => {
-    app.listen(3003, () => {
-      console.log('Server is running on port 3001');
+    app.listen(3000, () => {
+      console.log('Server is running on port 3000');
     });
   })
   .catch((error) => {

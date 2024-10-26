@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
 import Employee from '../models/Employee';
+import axios from 'axios';
 
-// Create a new Employee
+// new Employee
 export const createEmployee = async (req: Request, res: Response) => {
   const { employee_id, org_id, name, email, role, employee_type, experience, lpa, hourly_rate, project_id, project_manager_id, attendance } = req.body;
 
   try {
-    // Create a new employee using Mongoose
     const employee = await Employee.create({
       employee_id,
-      org_id, // No conversion needed
+      org_id,
       name,
       email,
       role,
@@ -17,8 +17,8 @@ export const createEmployee = async (req: Request, res: Response) => {
       experience,
       lpa,
       hourly_rate,
-      project_id, // No conversion needed
-      project_manager_id, // No conversion needed
+      project_id, 
+      project_manager_id, 
       attendance,
     });
 
@@ -39,7 +39,7 @@ export const getAllEmployees = async (req: Request, res: Response) => {
 };
 
 
-// Get an Employee by employee_id
+// Get an EmployeeById
 export const getEmployeeById = async (req: Request, res: Response) => {
     const { employee_id } = req.params;
   
@@ -56,7 +56,7 @@ export const getEmployeeById = async (req: Request, res: Response) => {
     }
   };
   
-  // Update an Employee by employee_id
+  // Update an Employee
   export const updateEmployee = async (req: Request, res: Response) => {
     const { employee_id } = req.params;
     const updates = req.body;
@@ -74,7 +74,7 @@ export const getEmployeeById = async (req: Request, res: Response) => {
     }
   };
   
-  // Delete an Employee by employee_id
+  // Delete an Employee
   export const deleteEmployee = async (req: Request, res: Response) => {
     const { employee_id } = req.params;
   

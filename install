@@ -5,6 +5,7 @@ npm install express mongoose
 npm install --save-dev typescript @types/express ts-node nodemon
 npm install @types/cors
 npm install @types/mongoose-sequence
+npm install axios
 npx tsc --init
 
 
