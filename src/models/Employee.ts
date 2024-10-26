@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 interface IEmployee extends Document {
   employee_id: number;
-  org_id: mongoose.Schema.Types.ObjectId; 
+  org_id: number; // Change from string to number
   name: string;
   email: string;
   role: string;
@@ -10,12 +10,12 @@ interface IEmployee extends Document {
   experience: number;
   lpa: number;
   hourly_rate: number;
-  project_id: mongoose.Schema.Types.ObjectId;
-  project_manager_id: mongoose.Schema.Types.ObjectId; // Reference to Users collection
+  project_id: number; // Change from string to number
+  project_manager_id: number; // Change from string to number
   attendance: Record<string, string>;
 }
 
-// schema part
+// Schema definition
 const EmployeeSchema: Schema = new Schema({
   employee_id: {
     type: Number,
@@ -23,7 +23,7 @@ const EmployeeSchema: Schema = new Schema({
     unique: true,
   },
   org_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number, // Keep as Number
     ref: 'Organization',
     required: true,
   },
@@ -57,12 +57,12 @@ const EmployeeSchema: Schema = new Schema({
     required: true,
   },
   project_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number, // Keep as Number
     ref: 'Project',
     required: false,
   },
   project_manager_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number, // Keep as Number
     ref: 'User',
     required: false,
   },
