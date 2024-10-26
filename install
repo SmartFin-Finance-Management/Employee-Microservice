@@ -1,0 +1,24 @@
+---
+---------------------------------------------------------------
+npm init -y
+npm install express mongoose
+npm install --save-dev typescript @types/express ts-node nodemon
+npm install @types/cors
+npx tsc --init
+
+npx ts-node .\src\index.ts
+
+---------------------------------------------------------------
+
+
+
+npm init -y
+npm install express  pdfmake typescript ts-node-dev --save
+npm install @types/express @types/sequelize --save-dev
+npm i cors
+
+
+npx create-react-app po-frontend --template typescript
+npm i axios
+cd po-frontend
+npm start
