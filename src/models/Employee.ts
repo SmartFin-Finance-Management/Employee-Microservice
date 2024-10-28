@@ -3,6 +3,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 interface IEmployee extends Document {
   employee_id: number;
   org_id: number; 
+  client_id: number; 
   name: string;
   email: string;
   role: string;
@@ -25,6 +26,11 @@ const EmployeeSchema: Schema = new Schema({
   org_id: {
     type: Number,
     ref: 'Organization',
+    required: true,
+  },
+  client_id: {
+    type: Number,
+    ref: 'Client',
     required: true,
   },
   name: {

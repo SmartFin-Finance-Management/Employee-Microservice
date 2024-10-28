@@ -4,12 +4,13 @@ import axios from 'axios';
 
 // new Employee
 export const createEmployee = async (req: Request, res: Response) => {
-  const { employee_id, org_id, name, email, role, employee_type, experience, lpa, hourly_rate, project_id, project_manager_id, attendance } = req.body;
+  const { employee_id, org_id, client_id, name, email, role, employee_type, experience, lpa, hourly_rate, project_id, project_manager_id, attendance } = req.body;
 
   try {
     const employee = await Employee.create({
       employee_id,
       org_id,
+      client_id,
       name,
       email,
       role,
@@ -139,5 +140,41 @@ export const updateAttendance = async (req: Request, res: Response) => {
     res.status(200).json({ message: 'Attendance updated successfully', attendance: employee.attendance });
   } catch (error) {
     res.status(500).json({ error: `Error updating attendance: ${error}` });
+  }
+};
+
+// get employees by Org id
+export const getEmployeesByOrgId = async (req: Request, res: Response) => {
+  const { org_id } = req.params;
+
+  try {
+    const employees = await Employee.find({ org_id });
+    res.status(200).json(employees);
+  } catch (error) {
+    res.status(500).json({ error: `Error fetching employees by org_id: ${error}` });
+  }
+};
+
+// get employees by client_id
+export const getEmployeesByClientId = async (req: Request, res: Response) => {
+  const { client_id } = req.params;
+
+  try {
+    const employees = await Employee.find({ client_id });
+    res.status(200).json(employees);
+  } catch (error) {
+    res.status(500).json({ error: `Error fetching employees by client_id: ${error}` });
+  }
+};
+
+// get employees by project_ID
+export const getEmployeesByProjectId = async (req: Request, res: Response) => {
+  const { project_id } = req.params;
+
+  try {
+    const employees = await Employee.find({ project_id });
+    res.status(200).json(employees);
+  } catch (error) {
+    res.status(500).json({ error: `Error fetching employees by project_id: ${error}` });
   }
 };
