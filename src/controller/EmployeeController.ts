@@ -90,3 +90,54 @@ export const getEmployeeById = async (req: Request, res: Response) => {
       res.status(500).json({ error: `Error deleting employee: ${error}` });
     }
   };
+
+// Add Attendance for an Employee
+export const addAttendance = async (req: Request, res: Response) => {
+  const { employee_id } = req.params;
+  const { date, status } = req.body; // Expecting date and status in the request body
+
+  try {
+    const employee = await Employee.findOne({ employee_id });
+
+    if (!employee) {
+      res.status(404).json({ error: 'Employee not found' });
+      return;
+    }
+
+    // Add new attendance record
+    employee.attendance[date] = status;
+    await employee.save();
+
+    res.status(200).json({ message: 'Attendance added successfully', attendance: employee.attendance });
+  } catch (error) {
+    res.status(500).json({ error: `Error adding attendance: ${error}` });
+  }
+};
+
+// Update Attendance for an Employee
+export const updateAttendance = async (req: Request, res: Response) => {
+  const { employee_id } = req.params;
+  const { date, status } = req.body;
+
+  try {
+    const employee = await Employee.findOne({ employee_id });
+
+    if (!employee) {
+      res.status(404).json({ error: 'Employee not found' });
+      return;
+    }
+
+    if (!employee.attendance[date]) {
+      res.status(404).json({ error: 'Attendance record for this date not found' });
+      return;
+    }
+
+    // Update attendance record
+    employee.attendance[date] = status;
+    await employee.save();
+
+    res.status(200).json({ message: 'Attendance updated successfully', attendance: employee.attendance });
+  } catch (error) {
+    res.status(500).json({ error: `Error updating attendance: ${error}` });
+  }
+};
