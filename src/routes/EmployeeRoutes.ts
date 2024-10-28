@@ -34,7 +34,7 @@ router.get('/employees/projects/:project_id', getEmployeesByProjectId);
 
 // Project
 router.get('/employees/projectCompleted/:employee_id', completeProjectForEmployee);
-router.post('/employees/assignProject/:employee_id/:project_id', assignProjectToEmployee);
+router.get('/employees/assignProject/:employee_id/:project_id', assignProjectToEmployee);
 
 
 export default router;
