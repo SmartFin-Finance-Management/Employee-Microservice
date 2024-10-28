@@ -14,9 +14,9 @@ import {
 
 const router = express.Router();
 
-router.post('/employees', createEmployee);
 router.get('/employees', getAllEmployees);
 router.get('/employees/:employee_id', getEmployeeById);
+router.post('/employees', createEmployee);
 router.put('/employees/:employee_id', updateEmployee);
 router.delete('/employees/:employee_id', deleteEmployee);
 router.post('/employees/:employee_id/attendance', addAttendance);
