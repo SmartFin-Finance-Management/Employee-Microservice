@@ -1,0 +1,507 @@
+[
+    {
+      "employee_id": 1,
+      "org_id": 1,
+      "client_id": 3,
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "role": "full-time",
+      "employee_type": "on-bench",
+      "experience": 4,
+      "lpa": { "$numberDecimal": "800000" },
+      "hourly_rate": { "$numberDecimal": "400" },
+      "project_id": 0,
+      "project_history": [12, 23, 45, 56],
+      "project_manager_id": 2,
+      "attendance": {
+        "2024-01-01": "Present",
+        "2024-01-02": "Present",
+        "2024-01-03": "Absent"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 2,
+      "org_id": 2,
+      "client_id": 4,
+      "name": "Bob Smith",
+      "email": "bob.smith@example.com",
+      "role": "contract",
+      "employee_type": "contractor",
+      "experience": 7,
+      "lpa": { "$numberDecimal": "1200000" },
+      "hourly_rate": { "$numberDecimal": "600" },
+      "project_id": 103,
+      "project_history": [101, 102, 100],
+      "project_manager_id": 3,
+      "attendance": {
+        "2024-02-01": "Present",
+        "2024-02-02": "Present",
+        "2024-02-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 3,
+      "org_id": 1,
+      "client_id": 2,
+      "name": "Carol Williams",
+      "email": "carol.williams@example.com",
+      "role": "intern",
+      "employee_type": "intern",
+      "experience": 1,
+      "lpa": { "$numberDecimal": "300000" },
+      "hourly_rate": { "$numberDecimal": "200" },
+      "project_id": 105,
+      "project_history": [101, 99, 108],
+      "project_manager_id": 4,
+      "attendance": {
+        "2024-03-01": "Absent",
+        "2024-03-02": "Present",
+        "2024-03-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 4,
+      "org_id": 3,
+      "client_id": 5,
+      "name": "David Brown",
+      "email": "david.brown@example.com",
+      "role": "part-time",
+      "employee_type": "part-time",
+      "experience": 2,
+      "lpa": { "$numberDecimal": "500000" },
+      "hourly_rate": { "$numberDecimal": "300" },
+      "project_id": 0,
+      "project_history": [12, 34, 56],
+      "project_manager_id": 1,
+      "attendance": {
+        "2024-04-01": "Present",
+        "2024-04-02": "Absent",
+        "2024-04-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 5,
+      "org_id": 1,
+      "client_id": 6,
+      "name": "Emma Davis",
+      "email": "emma.davis@example.com",
+      "role": "full-time",
+      "employee_type": "full-time",
+      "experience": 6,
+      "lpa": { "$numberDecimal": "950000" },
+      "hourly_rate": { "$numberDecimal": "480" },
+      "project_id": 110,
+      "project_history": [110, 111, 109],
+      "project_manager_id": 5,
+      "attendance": {
+        "2024-05-01": "Present",
+        "2024-05-02": "Absent",
+        "2024-05-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 6,
+      "org_id": 2,
+      "client_id": 7,
+      "name": "Frank Harris",
+      "email": "frank.harris@example.com",
+      "role": "full-time",
+      "employee_type": "full-time",
+      "experience": 5,
+      "lpa": { "$numberDecimal": "850000" },
+      "hourly_rate": { "$numberDecimal": "450" },
+      "project_id": 120,
+      "project_history": [121, 122, 123],
+      "project_manager_id": 3,
+      "attendance": {
+        "2024-06-01": "Present",
+        "2024-06-02": "Absent",
+        "2024-06-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 7,
+      "org_id": 1,
+      "client_id": 8,
+      "name": "Grace Lee",
+      "email": "grace.lee@example.com",
+      "role": "contract",
+      "employee_type": "contractor",
+      "experience": 3,
+      "lpa": { "$numberDecimal": "700000" },
+      "hourly_rate": { "$numberDecimal": "350" },
+      "project_id": 0,
+      "project_history": [134, 135],
+      "project_manager_id": 2,
+      "attendance": {
+        "2024-07-01": "Present",
+        "2024-07-02": "Present",
+        "2024-07-03": "Absent"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 8,
+      "org_id": 3,
+      "client_id": 9,
+      "name": "Henry Green",
+      "email": "henry.green@example.com",
+      "role": "intern",
+      "employee_type": "intern",
+      "experience": 1,
+      "lpa": { "$numberDecimal": "250000" },
+      "hourly_rate": { "$numberDecimal": "150" },
+      "project_id": 0,
+      "project_history": [143],
+      "project_manager_id": 4,
+      "attendance": {
+        "2024-08-01": "Present",
+        "2024-08-02": "Present",
+        "2024-08-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 9,
+      "org_id": 2,
+      "client_id": 10,
+      "name": "Isabella Clark",
+      "email": "isabella.clark@example.com",
+      "role": "part-time",
+      "employee_type": "part-time",
+      "experience": 2,
+      "lpa": { "$numberDecimal": "500000" },
+      "hourly_rate": { "$numberDecimal": "300" },
+      "project_id": 150,
+      "project_history": [145, 146],
+      "project_manager_id": 5,
+      "attendance": {
+        "2024-09-01": "Present",
+        "2024-09-02": "Absent",
+        "2024-09-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 10,
+      "org_id": 1,
+      "client_id": 11,
+      "name": "Jack Wright",
+      "email": "jack.wright@example.com",
+      "role": "full-time",
+      "employee_type": "full-time",
+      "experience": 8,
+      "lpa": { "$numberDecimal": "1100000" },
+      "hourly_rate": { "$numberDecimal": "550" },
+      "project_id": 0,
+      "project_history": [154, 155],
+      "project_manager_id": 6,
+      "attendance": {
+        "2024-10-01": "Present",
+        "2024-10-02": "Absent",
+        "2024-10-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 11,
+      "org_id": 3,
+      "client_id": 12,
+      "name": "Katherine Lewis",
+      "email": "katherine.lewis@example.com",
+      "role": "contract",
+      "employee_type": "contractor",
+      "experience": 9,
+      "lpa": { "$numberDecimal": "1300000" },
+      "hourly_rate": { "$numberDecimal": "700" },
+      "project_id": 160,
+      "project_history": [162],
+      "project_manager_id": 5,
+      "attendance": {
+        "2024-11-01": "Present",
+        "2024-11-02": "Present",
+        "2024-11-03": "Absent"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 12,
+      "org_id": 1,
+      "client_id": 13,
+      "name": "Michael Scott",
+      "email": "michael.scott@example.com",
+      "role": "intern",
+      "employee_type": "intern",
+      "experience": 0,
+      "lpa": { "$numberDecimal": "100000" },
+      "hourly_rate": { "$numberDecimal": "100" },
+      "project_id": 0,
+      "project_history": [170],
+      "project_manager_id": 4,
+      "attendance": {
+        "2024-12-01": "Absent",
+        "2024-12-02": "Present",
+        "2024-12-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 13,
+      "org_id": 2,
+      "client_id": 14,
+      "name": "Nina Brown",
+      "email": "nina.brown@example.com",
+      "role": "part-time",
+      "employee_type": "part-time",
+      "experience": 4,
+      "lpa": { "$numberDecimal": "900000" },
+      "hourly_rate": { "$numberDecimal": "450" },
+      "project_id": 0,
+      "project_history": [173, 174],
+      "project_manager_id": 3,
+      "attendance": {
+        "2024-01-01": "Present",
+        "2024-01-02": "Absent",
+        "2024-01-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 14,
+      "org_id": 3,
+      "client_id": 15,
+      "name": "Oliver Green",
+      "email": "oliver.green@example.com",
+      "role": "full-time",
+      "employee_type": "full-time",
+      "experience": 5,
+      "lpa": { "$numberDecimal": "950000" },
+      "hourly_rate": { "$numberDecimal": "500" },
+      "project_id": 0,
+      "project_history": [175, 176],
+      "project_manager_id": 5,
+      "attendance": {
+        "2024-02-01": "Present",
+        "2024-02-02": "Present",
+        "2024-02-03": "Absent"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 15,
+      "org_id": 1,
+      "client_id": 16,
+      "name": "Pamela Anderson",
+      "email": "pamela.anderson@example.com",
+      "role": "contract",
+      "employee_type": "contractor",
+      "experience": 6,
+      "lpa": { "$numberDecimal": "1100000" },
+      "hourly_rate": { "$numberDecimal": "650" },
+      "project_id": 177,
+      "project_history": [180],
+      "project_manager_id": 4,
+      "attendance": {
+        "2024-03-01": "Present",
+        "2024-03-02": "Present",
+        "2024-03-03": "Absent"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 16,
+      "org_id": 2,
+      "client_id": 17,
+      "name": "Quincy Adams",
+      "email": "quincy.adams@example.com",
+      "role": "full-time",
+      "employee_type": "full-time",
+      "experience": 5,
+      "lpa": { "$numberDecimal": "900000" },
+      "hourly_rate": { "$numberDecimal": "480" },
+      "project_id": 0,
+      "project_history": [183],
+      "project_manager_id": 3,
+      "attendance": {
+        "2024-04-01": "Present",
+        "2024-04-02": "Absent",
+        "2024-04-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 17,
+      "org_id": 1,
+      "client_id": 18,
+      "name": "Rachael Smith",
+      "email": "rachael.smith@example.com",
+      "role": "intern",
+      "employee_type": "intern",
+      "experience": 1,
+      "lpa": { "$numberDecimal": "200000" },
+      "hourly_rate": { "$numberDecimal": "150" },
+      "project_id": 0,
+      "project_history": [190],
+      "project_manager_id": 5,
+      "attendance": {
+        "2024-05-01": "Present",
+        "2024-05-02": "Absent",
+        "2024-05-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 18,
+      "org_id": 3,
+      "client_id": 19,
+      "name": "Sam Wilson",
+      "email": "sam.wilson@example.com",
+      "role": "full-time",
+      "employee_type": "full-time",
+      "experience": 4,
+      "lpa": { "$numberDecimal": "800000" },
+      "hourly_rate": { "$numberDecimal": "400" },
+      "project_id": 0,
+      "project_history": [193, 194],
+      "project_manager_id": 2,
+      "attendance": {
+        "2024-06-01": "Present",
+        "2024-06-02": "Present",
+        "2024-06-03": "Absent"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 19,
+      "org_id": 2,
+      "client_id": 20,
+      "name": "Tom Hanks",
+      "email": "tom.hanks@example.com",
+      "role": "contract",
+      "employee_type": "contractor",
+      "experience": 7,
+      "lpa": { "$numberDecimal": "1300000" },
+      "hourly_rate": { "$numberDecimal": "650" },
+      "project_id": 0,
+      "project_history": [200, 201],
+      "project_manager_id": 4,
+      "attendance": {
+        "2024-07-01": "Present",
+        "2024-07-02": "Absent",
+        "2024-07-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 20,
+      "org_id": 1,
+      "client_id": 21,
+      "name": "Uma Thurman",
+      "email": "uma.thurman@example.com",
+      "role": "full-time",
+      "employee_type": "full-time",
+      "experience": 5,
+      "lpa": { "$numberDecimal": "900000" },
+      "hourly_rate": { "$numberDecimal": "450" },
+      "project_id": 0,
+      "project_history": [210],
+      "project_manager_id": 5,
+      "attendance": {
+        "2024-08-01": "Absent",
+        "2024-08-02": "Present",
+        "2024-08-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 21,
+      "org_id": 3,
+      "client_id": 22,
+      "name": "Vince Vaughn",
+      "email": "vince.vaughn@example.com",
+      "role": "intern",
+      "employee_type": "intern",
+      "experience": 1,
+      "lpa": { "$numberDecimal": "100000" },
+      "hourly_rate": { "$numberDecimal": "100" },
+      "project_id": 0,
+      "project_history": [220],
+      "project_manager_id": 1,
+      "attendance": {
+        "2024-09-01": "Present",
+        "2024-09-02": "Present",
+        "2024-09-03": "Absent"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 22,
+      "org_id": 2,
+      "client_id": 23,
+      "name": "Wendy Wu",
+      "email": "wendy.wu@example.com",
+      "role": "part-time",
+      "employee_type": "part-time",
+      "experience": 3,
+      "lpa": { "$numberDecimal": "600000" },
+      "hourly_rate": { "$numberDecimal": "300" },
+      "project_id": 0,
+      "project_history": [230],
+      "project_manager_id": 2,
+      "attendance": {
+        "2024-10-01": "Present",
+        "2024-10-02": "Absent",
+        "2024-10-03": "Present"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 23,
+      "org_id": 1,
+      "client_id": 24,
+      "name": "Xander Cage",
+      "email": "xander.cage@example.com",
+      "role": "full-time",
+      "employee_type": "full-time",
+      "experience": 4,
+      "lpa": { "$numberDecimal": "850000" },
+      "hourly_rate": { "$numberDecimal": "400" },
+      "project_id": 0,
+      "project_history": [240],
+      "project_manager_id": 3,
+      "attendance": {
+        "2024-11-01": "Present",
+        "2024-11-02": "Present",
+        "2024-11-03": "Absent"
+      },
+      "__v": 0
+    },
+    {
+      "employee_id": 24,
+      "org_id": 3,
+      "client_id": 25,
+      "name": "Zoe Saldana",
+      "email": "zoe.saldana@example.com",
+      "role": "contract",
+      "employee_type": "contractor",
+      "experience": 8,
+      "lpa": { "$numberDecimal": "1400000" },
+      "hourly_rate": { "$numberDecimal": "700" },
+      "project_id": 0,
+      "project_history": [250],
+      "project_manager_id": 5,
+      "attendance": {
+        "2024-12-01": "Present",
+        "2024-12-02": "Present",
+        "2024-12-03": "Absent"
+      },
+      "__v": 0
+    }
+  ]
+  
