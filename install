@@ -8,8 +8,33 @@ npm install @types/mongoose-sequence
 npm install axios
 npx tsc --init
 
+npm install ts-node-dev --save-dev
+
+
 
 npx ts-node .\src\index.ts
+
+
+
+---------------------------------------------------------------
+
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  npm start
+
+---------------------------------------------------------------
+
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+npm install ts-node-dev --save-dev
 
 ---------------------------------------------------------------
 
