@@ -12,7 +12,8 @@ interface IEmployee extends Document {
   lpa: number;
   hourly_rate: number;
   project_id: number;
-  project_manager_id: number; 
+  project_history: number[];
+  project_manager_id: number;
   attendance: Record<string, string>;
 }
 
@@ -66,6 +67,10 @@ const EmployeeSchema: Schema = new Schema({
     type: Number,
     ref: 'Project',
     required: false,
+  },
+  project_history: {
+    type: [Number], 
+    default: [],
   },
   project_manager_id: {
     type: Number,

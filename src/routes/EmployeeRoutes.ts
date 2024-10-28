@@ -10,6 +10,8 @@ import {
     getEmployeesByOrgId,
     getEmployeesByClientId,
     getEmployeesByProjectId,
+    completeProjectForEmployee,
+    assignProjectToEmployee
   } from '../controller/EmployeeController';
 
 const router = express.Router();
@@ -26,9 +28,12 @@ router.post('/employees/:employee_id/attendance', addAttendance);
 router.put('/employees/:employee_id/attendance', updateAttendance);
 
 //  Filter by OrgId, ClientId, ProjectId
-router.get('/employees/organization/:org_id', getEmployeesByOrgId);
+router.get('/employees/orgs/:org_id', getEmployeesByOrgId);
 router.get('/employees/client/:client_id', getEmployeesByClientId);
-router.get('/employees/project/:project_id', getEmployeesByProjectId);
+router.get('/employees/projects/:project_id', getEmployeesByProjectId);
+
+router.get('/employees/projectcompleted/:employee_id', completeProjectForEmployee);
+router.post('/employees/assignproject/:employee_id/:project_id', assignProjectToEmployee);
 
 
 export default router;
