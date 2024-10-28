@@ -183,7 +183,6 @@ export const getEmployeesByProjectId = async (req: Request, res: Response) => {
 // Mark project as completed for an employee
 export const completeProjectForEmployee = async (req: Request, res: Response) => {
   const { employee_id } = req.params;
-  const { project_id } = req.body;
 
   try {
     const employee = await Employee.findOne({ employee_id });
@@ -193,9 +192,10 @@ export const completeProjectForEmployee = async (req: Request, res: Response) =>
       return;
     }
 
-    if (employee.project_id === project_id) {
-      if (!employee.project_history.includes(project_id)) {
-        employee.project_history.push(project_id);
+    if (employee.project_id !== 0) {
+
+      if (!employee.project_history.includes(employee.project_id)) {
+        employee.project_history.push(employee.project_id);
       }
       employee.project_id = 0;
       await employee.save();
