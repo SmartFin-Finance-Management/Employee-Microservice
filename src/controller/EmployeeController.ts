@@ -247,8 +247,8 @@ export const calculateEmployeeSalary = async (req: Request, res: Response) => {
         return;
       }
 
-      // Calculate salary based on LPA or hourly rate
-      const salary = employee.lpa ? employee.lpa / 12 : employee.hourly_rate * 8 * 22; // Assuming 22 working days per month
+      // Calculate salary based hourly rate
+      const salary = employee.hourly_rate * 8;
 
       res.status(200).json({
           employee_id: employee.employee_id,
@@ -275,7 +275,7 @@ export const calculateTotalSalary = async (req: Request, res: Response) => {
       // Calculate salary for each employee and total salary
       let total_salary = 0;
       const employee_list = employees.map(employee => {
-          const salary = employee.lpa ? employee.lpa / 12 : employee.hourly_rate * 8 * 22; // Assuming 22 working days
+          const salary = employee.hourly_rate * 8 ;
           total_salary += salary;
           return { employee_id: employee.employee_id, salary };
       });
