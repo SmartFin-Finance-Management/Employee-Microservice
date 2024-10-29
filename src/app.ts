@@ -13,6 +13,6 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api', employeeRoutes);
+app.use('/', employeeRoutes);
 
 export default app;
