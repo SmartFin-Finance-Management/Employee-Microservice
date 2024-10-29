@@ -233,3 +233,58 @@ export const assignProjectToEmployee = async (req: Request, res: Response) => {
     res.status(500).json({ error: `Error assigning project: ${error}` });
   }
 };
+
+// salary calculation for employee
+export const calculateEmployeeSalary = async (req: Request, res: Response) => {
+  const { employee_id } = req.params;
+
+  try {
+      // Fetch employee by employee_id
+      const employee = await Employee.findOne({ employee_id });
+
+      if (!employee) {
+        res.status(404).json({ error: 'Employee not found' });
+        return;
+      }
+
+      // Calculate salary based on LPA or hourly rate
+      const salary = employee.lpa ? employee.lpa / 12 : employee.hourly_rate * 8 * 22; // Assuming 22 working days per month
+
+      res.status(200).json({
+          employee_id: employee.employee_id,
+          salary
+      });
+  } catch (error) {
+      res.status(500).json({ error: `Error calculating salary: ${error}` });
+  }
+};
+
+// salary calculation
+export const calculateTotalSalary = async (req: Request, res: Response) => {
+  const { employees_list } = req.body;
+
+  try {
+      // Fetch employees by list of employee IDs
+      const employees = await Employee.find({ employee_id: { $in: employees_list } });
+
+      if (!employees.length) {
+          res.status(404).json({ error: 'No employees found for the given IDs' });
+          return;
+      }
+
+      // Calculate salary for each employee and total salary
+      let total_salary = 0;
+      const employee_list = employees.map(employee => {
+          const salary = employee.lpa ? employee.lpa / 12 : employee.hourly_rate * 8 * 22; // Assuming 22 working days
+          total_salary += salary;
+          return { employee_id: employee.employee_id, salary };
+      });
+
+      res.status(200).json({
+          total_salary,
+          employee_list
+      });
+  } catch (error) {
+      res.status(500).json({ error: `Error calculating salaries: ${error}` });
+  }
+};

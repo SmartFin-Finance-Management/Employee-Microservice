@@ -11,7 +11,9 @@ import {
     getEmployeesByClientId,
     getEmployeesByProjectId,
     completeProjectForEmployee,
-    assignProjectToEmployee
+    assignProjectToEmployee,
+    calculateEmployeeSalary,
+    calculateTotalSalary
   } from '../controller/EmployeeController';
 
 const router = express.Router();
@@ -35,6 +37,10 @@ router.get('/employees/projects/:project_id', getEmployeesByProjectId);
 // Project
 router.get('/employees/projectCompleted/:employee_id', completeProjectForEmployee);
 router.get('/employees/assignProject/:employee_id/:project_id', assignProjectToEmployee);
+
+// Salary
+router.get('/employees/calculateSalary/:employee_id', calculateEmployeeSalary);
+router.post('/employees/calculateSalaries', calculateTotalSalary);
 
 
 export default router;
