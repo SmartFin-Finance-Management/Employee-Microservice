@@ -13,7 +13,8 @@ import {
     completeProjectForEmployee,
     assignProjectToEmployee,
     calculateEmployeeSalary,
-    calculateTotalSalary
+    calculateTotalSalary,
+    getMaxEmployeeId
   } from '../controller/EmployeeController';
 
 const router = express.Router();
@@ -42,5 +43,7 @@ router.get('/employees/assignProject/:employee_id/:project_id', assignProjectToE
 router.get('/employees/calculateSalary/:employee_id', calculateEmployeeSalary);
 router.post('/employees/calculateSalaries', calculateTotalSalary);
 
+// unique id
+router.get('/employee/getUniqueId', getMaxEmployeeId);
 
 export default router;

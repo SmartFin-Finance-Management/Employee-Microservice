@@ -288,3 +288,25 @@ export const calculateTotalSalary = async (req: Request, res: Response) => {
       res.status(500).json({ error: `Error calculating salaries: ${error}` });
   }
 };
+
+
+// Get maximum employee_id
+export const getMaxEmployeeId = async (req: Request, res: Response) => {
+  console.log("Fetching max employee ID");
+  
+  try {
+    // Fetch the employee with the maximum employee_id
+    const maxEmployee = await Employee.findOne({}, { employee_id: 1 }) // Retrieve only the employee_id field
+      .sort({ employee_id: -1 }) // Sort in descending order to get the max id
+      .limit(1); // Limit to 1 result
+
+    // If maxEmployee is found, extract the employee_id, otherwise set it to 0
+    const maxId = maxEmployee ? maxEmployee.employee_id : 0;
+
+    // Send back the max employee_id as a JSON response
+    res.status(200).json({ max_employee_id: maxId });
+  } catch (error) {
+    console.error(`Error fetching max employee_id: ${error}`);
+    res.status(500).json({ error: `Error fetching maximum employee_id: ${error}` });
+  }
+};
