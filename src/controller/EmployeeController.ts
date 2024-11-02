@@ -310,3 +310,14 @@ export const getMaxEmployeeId = async (req: Request, res: Response) => {
     res.status(500).json({ error: `Error fetching maximum employee_id: ${error}` });
   }
 };
+
+
+// Get all employees whose project_id is 0 (indicating they are on bench)
+export const getAllEmployeesBench = async (req: Request, res: Response) => {
+  try {
+    const employees = await Employee.find({ project_id: 0 });
+    res.status(200).json(employees);
+  } catch (error) {
+    res.status(500).json({ error: `Error fetching employees: ${error}` });
+  }
+};

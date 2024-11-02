@@ -14,7 +14,8 @@ import {
     assignProjectToEmployee,
     calculateEmployeeSalary,
     calculateTotalSalary,
-    getMaxEmployeeId
+    getMaxEmployeeId,
+    getAllEmployeesBench
   } from '../controller/EmployeeController';
 
 const router = express.Router();
@@ -25,6 +26,9 @@ router.get('/employees/:employee_id', getEmployeeById);
 router.post('/employees', createEmployee);
 router.put('/employees/:employee_id', updateEmployee);
 router.delete('/employees/:employee_id', deleteEmployee);
+
+// Bench
+router.get('/employees/bench', getAllEmployeesBench);
 
 // Attendance
 router.post('/employees/:employee_id/attendance', addAttendance);
