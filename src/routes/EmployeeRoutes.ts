@@ -1,22 +1,22 @@
 import express from 'express';
-import { 
-    createEmployee, 
-    getAllEmployees, 
-    getEmployeeById, 
-    updateEmployee, 
-    deleteEmployee,  
-    addAttendance, 
-    updateAttendance,
-    getEmployeesByOrgId,
-    getEmployeesByClientId,
-    getEmployeesByProjectId,
-    completeProjectForEmployee,
-    assignProjectToEmployee,
-    calculateEmployeeSalary,
-    calculateTotalSalary,
-    getMaxEmployeeId,
-    getAllEmployeesBench
-  } from '../controller/EmployeeController';
+import {
+  createEmployee,
+  getAllEmployees,
+  getEmployeeById,
+  updateEmployee,
+  deleteEmployee,
+  addAttendance,
+  updateAttendance,
+  getEmployeesByOrgId,
+  getEmployeesByClientId,
+  getEmployeesByProjectId,
+  completeProjectForEmployee,
+  assignProjectToEmployee,
+  calculateEmployeeSalary,
+  calculateTotalSalary,
+  getMaxEmployeeId,
+  getAllEmployeesBench
+} from '../controller/EmployeeController';
 
 const router = express.Router();
 
@@ -28,7 +28,7 @@ router.put('/employees/:employee_id', updateEmployee);
 router.delete('/employees/:employee_id', deleteEmployee);
 
 // Bench
-router.get('/employees/bench', getAllEmployeesBench);
+router.get('/employeesBench', getAllEmployeesBench);
 
 // Attendance
 router.post('/employees/:employee_id/attendance', addAttendance);

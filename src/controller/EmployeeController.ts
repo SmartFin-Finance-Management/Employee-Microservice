@@ -20,7 +20,7 @@ export const createEmployee = async (req: Request, res: Response) => {
       hourly_rate,
       project_id,
       project_history,
-      project_manager_id, 
+      project_manager_id,
       attendance,
     });
 
@@ -43,55 +43,56 @@ export const getAllEmployees = async (req: Request, res: Response) => {
 
 // Get an EmployeeById
 export const getEmployeeById = async (req: Request, res: Response) => {
-    const { employee_id } = req.params;
-  
-    try {
-      const employee = await Employee.findOne({ employee_id });
-  
-      if (!employee) {
-        res.status(404).json({ error: 'Employee not found' });
-      }
-  
-      res.status(200).json(employee);
-    } catch (error) {
-      res.status(500).json({ error: `Error fetching employee: ${error}` });
+  const { employee_id } = req.params;
+
+  try {
+    const employee = await Employee.findOne({ employee_id });
+
+    if (!employee) {
+      res.status(404).json({ error: 'Employee not found' });
     }
-  };
-  
-  // Update an Employee
-  export const updateEmployee = async (req: Request, res: Response) => {
-    const { employee_id } = req.params;
-    const updates = req.body;
-  
-    try {
-      const employee = await Employee.findOneAndUpdate({ employee_id }, updates, { new: true, runValidators: true });
-  
-      if (!employee) {
-        res.status(404).json({ error: 'Employee not found' });
-      }
-  
-      res.status(200).json(employee);
-    } catch (error) {
-      res.status(500).json({ error: `Error updating employee: ${error}` });
+
+    res.status(200).json(employee);
+  } catch (error) {
+    res.status(500).json({ error: `Error fetching employee: ${error}` });
+  }
+};
+
+// Update an Employee
+export const updateEmployee = async (req: Request, res: Response) => {
+  const { employee_id } = req.params;
+  const updates = req.body;
+
+  try {
+    const employee = await Employee.findOneAndUpdate({ employee_id }, updates, { new: true, runValidators: true });
+
+    if (!employee) {
+      res.status(404).json({ error: 'Employee not found' });
     }
-  };
-  
-  // Delete an Employee
-  export const deleteEmployee = async (req: Request, res: Response) => {
-    const { employee_id } = req.params;
-  
-    try {
-      const employee = await Employee.findOneAndDelete({ employee_id });
-  
-      if (!employee) {
-        res.status(404).json({ error: 'Employee not found' });
-      }
-  
-      res.status(204).json(); // No content to 
-    } catch (error) {
-      res.status(500).json({ error: `Error deleting employee: ${error}` });
+
+    res.status(200).json(employee);
+  } catch (error) {
+    res.status(500).json({ error: `Error updating employee: ${error}` });
+  }
+};
+
+// Delete an Employee
+export const deleteEmployee = async (req: Request, res: Response) => {
+  const { employee_id } = req.params;
+
+  try {
+    const employee = await Employee.findOneAndDelete({ employee_id });
+
+    if (!employee) {
+      res.status(404).json({ error: 'Employee not found' });
+      return;
     }
-  };
+
+    res.status(204).json(); // No content to 
+  } catch (error) {
+    res.status(500).json({ error: `Error deleting employee: ${error}` });
+  }
+};
 
 // Add Attendance for an Employee
 export const addAttendance = async (req: Request, res: Response) => {
@@ -215,7 +216,7 @@ export const completeProjectForEmployee = async (req: Request, res: Response) =>
 // Assign a new project to an employee
 export const assignProjectToEmployee = async (req: Request, res: Response) => {
   const { employee_id, project_id } = req.params;
-  
+
   try {
     const employee = await Employee.findOne({ employee_id });
     if (!employee) {
@@ -239,23 +240,23 @@ export const calculateEmployeeSalary = async (req: Request, res: Response) => {
   const { employee_id } = req.params;
 
   try {
-      // Fetch employee by employee_id
-      const employee = await Employee.findOne({ employee_id });
+    // Fetch employee by employee_id
+    const employee = await Employee.findOne({ employee_id });
 
-      if (!employee) {
-        res.status(404).json({ error: 'Employee not found' });
-        return;
-      }
+    if (!employee) {
+      res.status(404).json({ error: 'Employee not found' });
+      return;
+    }
 
-      // Calculate salary based hourly rate
-      const salary = employee.hourly_rate * 8;
+    // Calculate salary based hourly rate
+    const salary = employee.hourly_rate * 8;
 
-      res.status(200).json({
-          employee_id: employee.employee_id,
-          salary
-      });
+    res.status(200).json({
+      employee_id: employee.employee_id,
+      salary
+    });
   } catch (error) {
-      res.status(500).json({ error: `Error calculating salary: ${error}` });
+    res.status(500).json({ error: `Error calculating salary: ${error}` });
   }
 };
 
@@ -264,28 +265,28 @@ export const calculateTotalSalary = async (req: Request, res: Response) => {
   const { employees_list } = req.body;
 
   try {
-      // Fetch employees by list of employee IDs
-      const employees = await Employee.find({ employee_id: { $in: employees_list } });
+    // Fetch employees by list of employee IDs
+    const employees = await Employee.find({ employee_id: { $in: employees_list } });
 
-      if (!employees.length) {
-          res.status(404).json({ error: 'No employees found for the given IDs' });
-          return;
-      }
+    if (!employees.length) {
+      res.status(404).json({ error: 'No employees found for the given IDs' });
+      return;
+    }
 
-      // Calculate salary for each employee and total salary
-      let total_salary = 0;
-      const employee_list = employees.map(employee => {
-          const salary = employee.hourly_rate * 8 ;
-          total_salary += salary;
-          return { employee_id: employee.employee_id, salary };
-      });
+    // Calculate salary for each employee and total salary
+    let total_salary = 0;
+    const employee_list = employees.map(employee => {
+      const salary = employee.hourly_rate * 8;
+      total_salary += salary;
+      return { employee_id: employee.employee_id, salary };
+    });
 
-      res.status(200).json({
-          total_salary,
-          employee_list
-      });
+    res.status(200).json({
+      total_salary,
+      employee_list
+    });
   } catch (error) {
-      res.status(500).json({ error: `Error calculating salaries: ${error}` });
+    res.status(500).json({ error: `Error calculating salaries: ${error}` });
   }
 };
 
@@ -293,7 +294,7 @@ export const calculateTotalSalary = async (req: Request, res: Response) => {
 // Get maximum employee_id
 export const getMaxEmployeeId = async (req: Request, res: Response) => {
   console.log("Fetching max employee ID");
-  
+
   try {
     // Fetch the employee with the maximum employee_id
     const maxEmployee = await Employee.findOne({}, { employee_id: 1 }) // Retrieve only the employee_id field
