@@ -46,10 +46,11 @@ export const getEmployeeById = async (req: Request, res: Response) => {
   const { employee_id } = req.params;
 
   try {
-    const employee = await Employee.findOne({ employee_id });
+    const employee = await Employee.findOne({ employee_id: Number(employee_id) });
 
     if (!employee) {
-      res.status(404).json({ error: 'Employee not found' });
+      res.status(404).json({ error: 'Employee not found'+employee });
+      return;
     }
 
     res.status(200).json(employee);
