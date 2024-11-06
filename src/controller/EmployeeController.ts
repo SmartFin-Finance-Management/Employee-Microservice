@@ -49,7 +49,7 @@ export const getEmployeeById = async (req: Request, res: Response) => {
     const employee = await Employee.findOne({ employee_id: Number(employee_id) });
 
     if (!employee) {
-      res.status(404).json({ error: 'Employee not found' });
+      res.status(404).json({ error: 'Employee not found' + employee });
       return;
     }
 
@@ -219,10 +219,10 @@ export const completeProjectForEmployee = async (req: Request, res: Response) =>
 
 // Assign a new project to an employee
 export const assignProjectToEmployee = async (req: Request, res: Response) => {
-  const { employee_id, project_id } = req.params;
+  const { employeeId, project_id } = req.params;
 
   try {
-    const employee = await Employee.findOne({ employee_id });
+    const employee = await Employee.findOne({ employee_id: employeeId });
     if (!employee) {
       res.status(404).json({ error: 'Employee not found' });
       return;
@@ -235,6 +235,7 @@ export const assignProjectToEmployee = async (req: Request, res: Response) => {
       current_project_id: employee.project_id,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: `Error assigning project: ${error}` });
   }
 };
@@ -266,11 +267,11 @@ export const calculateEmployeeSalary = async (req: Request, res: Response) => {
 
 // salary calculation
 export const calculateTotalSalary = async (req: Request, res: Response) => {
-  const { employees_list } = req.body;
+  const { List } = req.body;
 
   try {
     // Fetch employees by list of employee IDs
-    const employees = await Employee.find({ employee_id: { $in: employees_list } });
+    const employees = await Employee.find({ employee_id: { $in: List } });
 
     if (!employees.length) {
       res.status(404).json({ error: 'No employees found for the given IDs' });
