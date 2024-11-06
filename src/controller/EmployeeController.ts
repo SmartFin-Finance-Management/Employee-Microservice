@@ -216,10 +216,10 @@ export const completeProjectForEmployee = async (req: Request, res: Response) =>
 
 // Assign a new project to an employee
 export const assignProjectToEmployee = async (req: Request, res: Response) => {
-  const { employee_id, project_id } = req.params;
+  const { employeeId, project_id } = req.params;
 
   try {
-    const employee = await Employee.findOne({ employee_id });
+    const employee = await Employee.findOne({ employee_id: employeeId });
     if (!employee) {
       res.status(404).json({ error: 'Employee not found' });
       return;
@@ -232,6 +232,7 @@ export const assignProjectToEmployee = async (req: Request, res: Response) => {
       current_project_id: employee.project_id,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: `Error assigning project: ${error}` });
   }
 };
