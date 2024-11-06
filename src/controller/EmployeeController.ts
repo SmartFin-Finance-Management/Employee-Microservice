@@ -109,7 +109,7 @@ export const addAttendance = async (req: Request, res: Response) => {
     }
     console.log('%%%%%' + req.body);
 
-    
+
     // Add new attendance record
     employee.attendance[date] = status;
     const reslo = await Employee.findOneAndUpdate({ employee_id }, employee, { new: true, runValidators: true });
@@ -273,6 +273,7 @@ export const calculateTotalSalary = async (req: Request, res: Response) => {
     const employees = await Employee.find({ employee_id: { $in: List } });
 
     if (!employees.length) {
+
       res.status(404).json({ error: 'No employees found for the given IDs' });
       return;
     }
