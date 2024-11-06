@@ -109,6 +109,7 @@ export const addAttendance = async (req: Request, res: Response) => {
     }
     console.log('%%%%%' + req.body);
 
+    
     // Add new attendance record
     employee.attendance[date] = status;
     const reslo = await Employee.findOneAndUpdate({ employee_id }, employee, { new: true, runValidators: true });
