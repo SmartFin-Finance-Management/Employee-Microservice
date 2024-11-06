@@ -49,7 +49,7 @@ export const getEmployeeById = async (req: Request, res: Response) => {
     const employee = await Employee.findOne({ employee_id: Number(employee_id) });
 
     if (!employee) {
-      res.status(404).json({ error: 'Employee not found'+employee });
+      res.status(404).json({ error: 'Employee not found' });
       return;
     }
 
@@ -107,11 +107,13 @@ export const addAttendance = async (req: Request, res: Response) => {
       res.status(404).json({ error: 'Employee not found' });
       return;
     }
+    console.log('%%%%%'+req.body);
 
     // Add new attendance record
     employee.attendance[date] = status;
-    await employee.save();
-
+    const reslo = await Employee.findOneAndUpdate({ employee_id }, employee, { new: true, runValidators: true });
+    console.log(reslo);
+    
     res.status(200).json({ message: 'Attendance added successfully', attendance: employee.attendance });
   } catch (error) {
     res.status(500).json({ error: `Error adding attendance: ${error}` });
@@ -122,7 +124,8 @@ export const addAttendance = async (req: Request, res: Response) => {
 export const updateAttendance = async (req: Request, res: Response) => {
   const { employee_id } = req.params;
   const { date, status } = req.body;
-
+  console.log(employee_id+'+++++++'+req.body);
+  
   try {
     const employee = await Employee.findOne({ employee_id });
 
