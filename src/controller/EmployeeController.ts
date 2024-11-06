@@ -107,13 +107,13 @@ export const addAttendance = async (req: Request, res: Response) => {
       res.status(404).json({ error: 'Employee not found' });
       return;
     }
-    console.log('%%%%%'+req.body);
+    console.log('%%%%%' + req.body);
 
     // Add new attendance record
     employee.attendance[date] = status;
     const reslo = await Employee.findOneAndUpdate({ employee_id }, employee, { new: true, runValidators: true });
     console.log(reslo);
-    
+
     res.status(200).json({ message: 'Attendance added successfully', attendance: employee.attendance });
   } catch (error) {
     res.status(500).json({ error: `Error adding attendance: ${error}` });
@@ -124,8 +124,8 @@ export const addAttendance = async (req: Request, res: Response) => {
 export const updateAttendance = async (req: Request, res: Response) => {
   const { employee_id } = req.params;
   const { date, status } = req.body;
-  console.log(employee_id+'+++++++'+req.body);
-  
+  console.log(employee_id + '+++++++' + req.body);
+
   try {
     const employee = await Employee.findOne({ employee_id });
 
@@ -187,18 +187,16 @@ export const getEmployeesByProjectId = async (req: Request, res: Response) => {
 
 // Mark project as completed for an employee
 export const completeProjectForEmployee = async (req: Request, res: Response) => {
-  const { employee_id } = req.params;
-
+  const { employeeId } = req.params;
+  console.log(employeeId);
   try {
-    const employee = await Employee.findOne({ employee_id });
-
+    const employee = await Employee.findOne({ employee_id: employeeId });
     if (!employee) {
       res.status(404).json({ error: 'Employee not found' });
       return;
     }
-
+    console.log("projectId" + employee.project_id);
     if (employee.project_id !== 0) {
-
       if (!employee.project_history.includes(employee.project_id)) {
         employee.project_history.push(employee.project_id);
       }

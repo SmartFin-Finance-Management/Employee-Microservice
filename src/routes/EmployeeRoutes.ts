@@ -40,7 +40,7 @@ router.get('/employees/client/:client_id', getEmployeesByClientId);
 router.get('/employees/projects/:project_id', getEmployeesByProjectId);
 
 // Project
-router.get('/employees/projectCompleted/:employee_id', completeProjectForEmployee);
+router.get('/employees/projectCompleted/:employeeId', completeProjectForEmployee);
 router.get('/employees/assignProject/:employeeId/:project_id', assignProjectToEmployee);
 
 // Salary
